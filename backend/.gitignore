@@ -1,0 +1,17 @@
+HELP.md
+.mvn/*
+mvnw
+mvnw.cmd
+target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### VS Code ###
+.vscode/
