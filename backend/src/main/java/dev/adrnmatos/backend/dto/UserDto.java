@@ -1,17 +1,17 @@
 package dev.adrnmatos.backend.dto;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Getter
 @Setter
-@NoArgsConstructor
+@RequiredArgsConstructor
 @ToString
 public class UserDto {
 
-    private Long id;
-    private String name;
+    private final Long id;
+    private final String name;
 
 }
