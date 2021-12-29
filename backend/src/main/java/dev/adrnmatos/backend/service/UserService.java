@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dev.adrnmatos.backend.dto.UserDto;
+import dev.adrnmatos.backend.dto.mapper.UserMapper;
 import dev.adrnmatos.backend.repository.UserRepository;
 
 @Service
@@ -19,7 +20,7 @@ public class UserService {
 
         List<UserDto> userList = new ArrayList<>();
         userRepo.findAll().forEach(user -> {
-            userList.add(new UserDto(user.getId(), user.getName()));
+            userList.add(UserMapper.toUserDto(user));
         });
         return userList;
     }
