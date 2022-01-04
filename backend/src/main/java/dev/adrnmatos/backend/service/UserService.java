@@ -25,4 +25,8 @@ public class UserService {
         return userList;
     }
 
+    public UserDto createUser(UserDto userDto) {
+        return UserMapper.toUserDto(userRepo.save(UserMapper.toUserModel(userDto)));
+    }
+
 }

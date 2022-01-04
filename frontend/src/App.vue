@@ -3,17 +3,16 @@
     <header>
       <nav>
         <router-link to="/">Home</router-link> |
-        <router-link to="/about">About</router-link>
+        <router-link to="/servidor">Servidor</router-link>
       </nav>
     </header>
     <main>
       <router-view />
     </main>
     <footer>
-      <nav>
-        <router-link to="/">Home</router-link> |
-        <router-link to="/about">About</router-link>
-      </nav>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos, corporis?
+      </p>
     </footer>
   </div>
 </template>
