@@ -2,11 +2,14 @@ package dev.adrnmatos.backend.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,22 +20,27 @@ import dev.adrnmatos.backend.dto.UserDto;
 import dev.adrnmatos.backend.service.UserService;
 
 @RestController
-@RequestMapping(path = "/api/user", produces = "application/json")
+@RequestMapping(path = "/api/users", produces = "application/json")
 @CrossOrigin
-// @RequestMapping(path = "/api/user", produces = "application/hal+json")
+// @RequestMapping(path = "/api/users", produces = "application/hal+json")
 public class UserController {
 
     @Autowired
     UserService userService;
 
     @GetMapping
-    public ResponseEntity<List<UserDto>> getUsers() {
-        return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
+    public ResponseEntity<List<UserDto>> users() {
+        return new ResponseEntity<>(userService.getUsers(), HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDto> users(@PathVariable("id") Long id) {
+        return new ResponseEntity<>(userService.getUser(id), HttpStatus.OK);
     }
 
     @PostMapping(consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto) {
+    public ResponseEntity<UserDto> users(@Valid @RequestBody UserDto userDto) {
         return new ResponseEntity<>(userService.createUser(userDto), HttpStatus.CREATED);
     }
 
