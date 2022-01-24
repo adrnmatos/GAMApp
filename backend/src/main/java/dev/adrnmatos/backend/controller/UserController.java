@@ -1,5 +1,6 @@
 package dev.adrnmatos.backend.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.adrnmatos.backend.dto.UserDto;
+import dev.adrnmatos.backend.model.User;
 import dev.adrnmatos.backend.service.UserService;
 
 @RestController
@@ -44,4 +46,18 @@ public class UserController {
         return new ResponseEntity<>(userService.createUser(userDto), HttpStatus.CREATED);
     }
 
+    @GetMapping("/cargos")
+    public List<User.Cargo> cargos() {
+        return Arrays.asList(User.Cargo.values());
+    }
+
+    @GetMapping("/funcoes")
+    public List<User.Funcao> funcoes() {
+        return Arrays.asList(User.Funcao.values());
+    }
+
+    @GetMapping("/formacoes")
+    public List<User.Formacao> formacoes() {
+        return Arrays.asList(User.Formacao.values());
+    }
 }
