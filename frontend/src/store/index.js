@@ -6,12 +6,17 @@ const client = apiFactory.get('user');
 export default createStore({
   state: {
     user: {},
+    users: [],
     cargos: [],
     funcoes: [],
     formacoes: [],
   },
 
   mutations: {
+    SET_ALL_USERS(state, allUsers) {
+      state.users = allUsers;
+    },
+
     SET_USER(state, newUser) {
       state.user = newUser;
     },
@@ -30,6 +35,12 @@ export default createStore({
   },
 
   actions: {
+    async getAllUsers(context) {
+      const users = await client.get();
+      console.log(users);
+      context.commit('SET_ALL_USERS', users.data);
+    },
+
     async criarUsuario(context, userObj) {
       const newUser = await client.create(userObj);
       context.commit('SET_USER', newUser);

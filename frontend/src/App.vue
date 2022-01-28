@@ -4,6 +4,7 @@
       <nav>
         <router-link to="/">Home</router-link> |
         <router-link to="/servidor">Servidor</router-link>
+        <router-link to="/tabela">TabelaServidor</router-link>
       </nav>
     </header>
     <main>
