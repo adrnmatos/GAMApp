@@ -39,6 +39,11 @@ public class UserController {
     public ResponseEntity<UserDto> users(@PathVariable("id") Long id) {
         return new ResponseEntity<>(userService.getUser(id), HttpStatus.OK);
     }
+    
+    @GetMapping("formacoes/{formacao}")
+    public ResponseEntity<List<UserDto>> findUsersByFormacao(@PathVariable("formacao") User.Formacao formacao) {
+        return new ResponseEntity<>(userService.findUsersByFormacao(formacao), HttpStatus.OK);
+    }
 
     @PostMapping(consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)

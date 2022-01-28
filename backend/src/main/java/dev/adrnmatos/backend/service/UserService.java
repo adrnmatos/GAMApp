@@ -38,4 +38,13 @@ public class UserService {
         return UserMapper.toUserDto(userRepo.save(UserMapper.toUserModel(userDto)));
     }
 
+    public List<UserDto> findUsersByFormacao(User.Formacao formacao) {
+
+        List<UserDto> userList = new ArrayList<>();
+        userRepo.findByFormacao(formacao).forEach(user -> {
+            userList.add(UserMapper.toUserDto(user));
+        });
+        return userList;
+    }
+
 }

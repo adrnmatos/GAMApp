@@ -47,7 +47,6 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Funcao funcao;
 
-    @Enumerated(EnumType.STRING)
     private Formacao formacao;
 
     // private List <String> interesses = new ArrayList<>();
