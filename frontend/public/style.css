@@ -1,8 +1,9 @@
 :root {
-  --main-color: #fefae0;
-  --accent-color: #dda15e;
-  --font-color: #283618;
-  --secondary-font-color: #606c38;
+  --main-color: #dfd0bb;
+  --font-color: #474344;
+  --accent-color: #e5bd77;
+  --bold-color: #943d2c;
+  --secondary-bold-color: #cc7952;
 }
 
 * {
@@ -25,7 +26,7 @@ body {
 }
 
 header {
-  background-color: var(--accent-color);
+  background-color: var(--bold-color);
   grid-area: header;
 }
 
@@ -45,16 +46,16 @@ nav {
 
 nav a {
   font-weight: bold;
-  color: var(--secondary-font-color);
+  color: var(--secondary-bold-color);
   padding: 10px;
 }
 
 nav a.router-link-exact-active {
-  color: var(--font-color);
+  color: var(--accent-color);
 }
 
 footer {
-  background-color: var(--accent-color);
+  background-color: var(--bold-color);
   grid-area: footer;
 }
 
