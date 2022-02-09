@@ -23,8 +23,7 @@
         <div class="inner-wrap">
           <label for="email">Email</label>
           <input type="email" id="email" v-model="user.email" />
-          <label for="telefone">Telefone</label>
-          <input type="text" id="telefone" v-model="user.telefone" />
+          <telefone-input @change="telefoneUpdateListener"></telefone-input>
         </div>
       </fieldset>
 
@@ -60,6 +59,7 @@
 </template>
 
 <script>
+import TelefoneInput from '../components/TelefoneInput.vue';
 import { mapState, mapActions } from 'vuex';
 
 export default {
@@ -80,6 +80,10 @@ export default {
     };
   },
 
+  components: {
+    'telefone-input': TelefoneInput,
+  },
+
   beforeCreate() {
     this.$store.dispatch('getCargos');
     this.$store.dispatch('getFuncoes');
@@ -92,6 +96,10 @@ export default {
 
   methods: {
     ...mapActions(['criarUsuario']),
+
+    telefoneUpdateListener(event) {
+      this.user.telefone = event;
+    },
     criar: function () {
       const userObj = {
         name: this.user.nome,
@@ -104,6 +112,7 @@ export default {
         funcao: this.user.funcao,
         formacao: this.user.formacao,
       };
+      console.log(userObj);
       this.criarUsuario(userObj);
     },
   },
