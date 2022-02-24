@@ -1,6 +1,8 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router';
+import store from './store';
 
-createApp(App).use(store).use(router).mount('#app')
+import plugin from '@adrnmatos/telefone-input-component';
+
+createApp(App).use(store).use(router).use(plugin).mount('#app');

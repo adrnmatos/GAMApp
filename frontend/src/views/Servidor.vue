@@ -59,7 +59,6 @@
 </template>
 
 <script>
-import TelefoneInput from '../components/TelefoneInput.vue';
 import { mapState, mapActions } from 'vuex';
 
 export default {
@@ -80,10 +79,6 @@ export default {
     };
   },
 
-  components: {
-    'telefone-input': TelefoneInput,
-  },
-
   beforeCreate() {
     this.$store.dispatch('getCargos');
     this.$store.dispatch('getFuncoes');
@@ -100,6 +95,7 @@ export default {
     telefoneUpdateListener(event) {
       this.user.telefone = event;
     },
+
     criar: function () {
       const userObj = {
         name: this.user.nome,
@@ -112,7 +108,6 @@ export default {
         funcao: this.user.funcao,
         formacao: this.user.formacao,
       };
-      console.log(userObj);
       this.criarUsuario(userObj);
     },
   },
