@@ -16,7 +16,8 @@ public class ProcessMapper {
 
         dto.setProcessNumber(process.getProcessNumber());
         dto.setType(process.getType());
-        dto.setParentNumber(process.getParent().getProcessNumber());
+        if(process.getParent()!= null)
+            dto.setParentNumber(process.getParent().getProcessNumber());
         dto.setJurisdicionado(process.getJurisdicionado());
         dto.setStatus(process.getStatus());
 
@@ -29,8 +30,10 @@ public class ProcessMapper {
         process.setProcessNumber(processDto.getProcessNumber());
         process.setType(processDto.getType());
 
-        Process parentProcess = repository.findByProcessNumber(processDto.getParentNumber());
-        process.setParent(parentProcess);
+        if(processDto.getParentNumber() != null) {
+            Process parentProcess = repository.findByProcessNumber(processDto.getParentNumber());
+            process.setParent(parentProcess);
+        }
         
         process.setJurisdicionado(processDto.getJurisdicionado());
         process.setStatus(processDto.getStatus());
