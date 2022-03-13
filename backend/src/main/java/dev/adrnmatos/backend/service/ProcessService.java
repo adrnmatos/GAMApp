@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import dev.adrnmatos.backend.dto.ProcessDto;
 import dev.adrnmatos.backend.dto.mapper.ProcessMapper;
 import dev.adrnmatos.backend.repository.ProcessRepository;
 
+@Service
 public class ProcessService {
 
     @Autowired ProcessRepository repository;
