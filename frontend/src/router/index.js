@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import Home from '../views/Home.vue';
 import ServidorTabela from '../views/ServidorTabela';
+import Processos from '../views/Processo';
 
 const routes = [
   {
@@ -21,6 +22,11 @@ const routes = [
     path: '/tabela',
     name: 'TabelaServidor',
     component: ServidorTabela,
+  },
+  {
+    path: '/Processos',
+    name: 'Processos',
+    component: Processos,
   },
 ];
 

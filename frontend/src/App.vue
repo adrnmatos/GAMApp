@@ -5,6 +5,7 @@
         <router-link to="/">Home</router-link> |
         <router-link to="/servidor">Servidor</router-link>
         <router-link to="/tabela">TabelaServidor</router-link>
+        <router-link to="/processos">Processos</router-link>
       </nav>
     </header>
     <main>
