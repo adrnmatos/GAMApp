@@ -60,7 +60,7 @@
 import { mapState, mapActions } from 'vuex';
 
 export default {
-  name: 'Servidor',
+  name: 'ServidoresCreate',
   data() {
     return {
       user: {
@@ -78,17 +78,21 @@ export default {
   },
 
   beforeCreate() {
-    this.$store.dispatch('getCargos');
-    this.$store.dispatch('getFuncoes');
-    this.$store.dispatch('getFormacoes');
+    this.$store.dispatch('user/getCargos');
+    this.$store.dispatch('user/getFuncoes');
+    this.$store.dispatch('user/getFormacoes');
   },
 
   computed: {
-    ...mapState(['cargos', 'funcoes', 'formacoes']),
+    ...mapState('user', {
+      cargos: (state) => state.cargos,
+      funcoes: (state) => state.funcoes,
+      formacoes: (state) => state.formacoes,
+    }),
   },
 
   methods: {
-    ...mapActions(['criarUsuario']),
+    ...mapActions('user', ['criarUsuario']),
 
     telefoneUpdateListener(event) {
       this.user.telefone = event;

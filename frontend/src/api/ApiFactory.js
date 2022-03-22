@@ -1,8 +1,10 @@
-import UserApi from './UserApi'
+import UserApi from './UserApi';
+import ProcessApi from './ProcessApi';
 
 const apis = {
-  user: UserApi
-}
+  userApi: UserApi,
+  processApi: ProcessApi,
+};
 export default {
-  get: (name) => apis[name]
-}
+  get: (name) => apis[name],
+};

@@ -1,7 +1,8 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import Home from '../views/Home.vue';
-import ServidorTabela from '../views/ServidorTabela';
-import Processos from '../views/Processo';
+import ServidorTabela from '../views/ServidoresIndex';
+import Processos from '../views/ProcessosCreate';
+import ProcessoTabela from '../views/ProcessosIndex';
 
 const routes = [
   {
@@ -10,23 +11,25 @@ const routes = [
     component: Home,
   },
   {
-    path: '/servidor',
-    name: 'Servidor',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ '../views/Servidor.vue'),
+    path: '/servidores/create',
+    name: 'ServidoresCreate',
+    component: () => import('../views/ServidoresCreate.vue'),
   },
   {
-    path: '/tabela',
-    name: 'TabelaServidor',
+    path: '/servidores',
+    name: 'ServidoresIndex',
     component: ServidorTabela,
   },
   {
-    path: '/Processos',
-    name: 'Processos',
+    path: '/processos/create',
+    name: 'ProcessosCreate',
     component: Processos,
+  },
+
+  {
+    path: '/processos',
+    name: 'ProcessosIndex',
+    component: ProcessoTabela,
   },
 ];
 

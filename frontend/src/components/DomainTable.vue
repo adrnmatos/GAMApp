@@ -1,9 +1,6 @@
 <template>
   <div>
     <table>
-      <caption>
-        Tabela de Servidores Cadastrados
-      </caption>
       <thead>
         <tr>
           <th v-for="col in columns" v-bind:key="col" @click="sortTable(col)">
@@ -17,8 +14,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="user of users" v-bind:key="user">
-          <td v-for="col in columns" v-bind:key="col">{{ user[col] }}</td>
+        <tr v-for="dom of localDomainData" v-bind:key="dom">
+          <td v-for="col in columns" v-bind:key="col">{{ dom[col] }}</td>
         </tr>
       </tbody>
       <tfoot>
@@ -29,23 +26,31 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 export default {
+  name: 'DomainTable',
+  props: {
+    domain: {
+      type: Array,
+    },
+  },
+
   data() {
     return {
+      localDomainData: this.domain,
       ascending: false,
       sortColumn: '',
     };
   },
+
   computed: {
-    ...mapState(['users']),
     columns: function () {
-      if (this.users.length === 0) {
+      if (this.domain.length === 0) {
         return [];
       }
-      return Object.keys(this.users[0]);
+      return Object.keys(this.domain[0]);
     },
   },
+
   methods: {
     sortTable(col) {
       if (this.sortColumn === col) {
@@ -57,7 +62,7 @@ export default {
 
       var ascending = this.ascending;
 
-      this.users.sort(function (a, b) {
+      this.localDomainData.sort(function (a, b) {
         if (a[col] > b[col]) {
           return ascending ? 1 : -1;
         } else if (a[col] < b[col]) {
@@ -66,9 +71,6 @@ export default {
         return 0;
       });
     },
-  },
-  beforeMount() {
-    this.$store.dispatch('getAllUsers');
   },
 };
 </script>
@@ -90,7 +92,7 @@ table th {
   text-transform: uppercase;
   text-align: left;
   background: var(--bold-color);
-  color: var(--accent-color);
+  color: var(--font-color);
   cursor: pointer;
   padding: 8px;
   /* min-width: 30px; */

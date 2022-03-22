@@ -2,10 +2,15 @@
   <div id="main">
     <header>
       <nav>
-        <router-link to="/">Home</router-link> |
-        <router-link to="/servidor">Servidor</router-link>
-        <router-link to="/tabela">TabelaServidor</router-link>
-        <router-link to="/processos">Processos</router-link>
+        <router-link :to="{ name: 'Home' }">Home</router-link> |
+        <router-link :to="{ name: 'ServidoresCreate' }">Servidor</router-link>
+        <router-link :to="{ name: 'ServidoresIndex' }"
+          >TabelaServidor</router-link
+        >
+        <router-link :to="{ name: 'ProcessosCreate' }">Processo</router-link>
+        <router-link :to="{ name: 'ProcessosIndex' }"
+          >TabelaProcesso</router-link
+        >
       </nav>
     </header>
     <main>
