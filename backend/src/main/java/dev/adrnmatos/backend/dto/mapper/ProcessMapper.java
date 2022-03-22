@@ -1,15 +1,21 @@
 package dev.adrnmatos.backend.dto.mapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import dev.adrnmatos.backend.dto.ProcessDto;
 import dev.adrnmatos.backend.model.Process;
 import dev.adrnmatos.backend.repository.ProcessRepository;
 
+@Component
 public class ProcessMapper {
     
-    @Autowired
     private static ProcessRepository repository;
+
+    @Autowired
+    public ProcessMapper(ProcessRepository repository) {
+        ProcessMapper.repository = repository;
+    }
 
     public static ProcessDto toProcessDto(Process process) {
         ProcessDto dto = new ProcessDto();
@@ -32,6 +38,7 @@ public class ProcessMapper {
 
         if(processDto.getParentNumber() != null) {
             Process parentProcess = repository.findByProcessNumber(processDto.getParentNumber());
+            System.out.printf("parentProcess: %s", parentProcess);
             process.setParent(parentProcess);
         }
         
